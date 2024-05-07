@@ -1,0 +1,35 @@
+<!-- Singleproduct Page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <h2 >Single Product Details</h2>
+    <div class="container">
+        
+        <div class="product-details">
+            <!-- Product Image -->
+            {% for product in products %}
+            <img src="/media/{{product.product_image}}" alt="Product" class="product-img" height="200px" width="200px">
+
+            <!-- Product Details -->
+            <div class="product-info">
+                <h3>Product Name: {{product.product_id.product_name}}</h3>
+                <h3>Price: Rs. {{product.product_price}}</h3>   
+                <h3>Model: {{product.product_model}}</h3>
+                <h3>Ram: {{product.product_ram}}</h3>
+            </div>
+            {% endfor %}
+            <a href="{% url 'update_product' pk=product.id %}"><button type="button" class="btn btn-success" style="font-size: 20px">Update</button></a>
+            <a href="{% url 'delete_product' pk=product.id %}"><button type="button" class="btn btn-success" style="font-size: 20px">Delete</button></a> 
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

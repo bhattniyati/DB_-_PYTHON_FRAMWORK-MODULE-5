@@ -1,0 +1,67 @@
+<!-- Viewproduct Page -->
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    
+    <h2>ALL PRODUCTS DETAILS</h2>
+    <table border="1">
+        <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Image</th>
+            <th>Product Model</th>
+            <th>Product Ram</th>
+            <th>Update & Delete</th>
+        </tr>
+        {% for product_item in product %}
+        <tr>
+            <td align="center">{{ product_item.product_name }}</td>
+            {% for product_detail in products %}
+            {% if product_detail.product_id_id == product_item.id %}
+            <td align="center">Rs. {{ product_detail.product_price }}</td>
+            <td align="center"><img src="/media/{{ product_detail.product_image }}" height="150px" width="150px"></td>
+            <td align="center">{{ product_detail.product_model }}</td>
+            <td align="center">{{ product_detail.product_ram }}</td>
+            <td align="center"><a href="{% url 'singleproduct' pk=product_item.pk %}">Update Delete</a></td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    
+    <h2>ALL PRODUCTS DETAILS</h2>
+    <table border="1">
+        <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Image</th>
+            <th>Product Model</th>
+            <th>Product Ram</th>
+            <th>Update & Delete</th>
+        </tr>
+        <tr>
+            {% for i in product %}
+            <td align="center">{{i.product_name}}</td>
+            {% for data in products %}
+            <td align="center">Rs. {{data.product_price}}</td>
+            <td align="center"><img src="/media/{{data.product_image}}" height="150px" width="150px"></td>
+            <td align="center">{{data.product_model}}</td>
+            <td align="center">{{data.product_ram}}</td>
+            <td align="center"><a href="{% url 'singleproduct' pk=i.pk %}">Update Delete</td>
+            {% endfor %}
+            {% endfor %}
+        </tr>
+    </tabel>
+</body>
+</html> {% endcomment %}

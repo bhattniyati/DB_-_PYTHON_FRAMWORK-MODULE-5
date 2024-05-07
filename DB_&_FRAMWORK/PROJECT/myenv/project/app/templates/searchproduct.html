@@ -1,0 +1,30 @@
+<!-- Searchproduct Page -->
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <center><h1>Search Product </h1>
+    <form method="post" action="{% url 'searchproduct' %}">
+    {% csrf_token %}
+        <input type="text" size="30" name="product_name" id="product_name" placeholder="Search for products..." style="height: 30px;">
+        <input type="submit" value="search" style="height: 35px;">
+    </form>
+
+    {% for i in product %}
+    <p> Product Name: {{i.product_name}}</p>
+    {% endfor %}
+
+    {% for detail in products %}
+    <p> Product Price: {{detail.product_price}}</p>
+    <p> Product Model: {{detail.product_model}}</p>
+    <p> Product Ram: {{detail.product_ram}}</p>
+    <p> Product Image: <br><img src="/media/{{detail.product_image}}" height="150px" width="150px"></p>
+    {% endfor %}
+    
+</form></center>
+</body>
+</html>
+
+
